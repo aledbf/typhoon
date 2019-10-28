@@ -59,6 +59,8 @@ resource "aws_launch_configuration" "worker" {
     encrypted   = true
   }
 
+  ebs_optimized = true
+
   # network
   security_groups = var.security_groups
 

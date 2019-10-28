@@ -34,6 +34,8 @@ resource "aws_instance" "controllers" {
     encrypted   = true
   }
 
+  ebs_optimized = true
+
   # network
   associate_public_ip_address = true
   subnet_id                   = element(aws_subnet.public.*.id, count.index)
