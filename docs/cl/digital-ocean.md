@@ -1,6 +1,6 @@
 # Digital Ocean
 
-In this tutorial, we'll create a Kubernetes v1.16.2 cluster on DigitalOcean with Container Linux.
+In this tutorial, we'll create a Kubernetes v1.16.3 cluster on DigitalOcean with Container Linux.
 
 We'll declare a Kubernetes cluster using the Typhoon Terraform module. Then apply the changes to create controller droplets, worker droplets, DNS records, tags, and TLS assets.
 
@@ -18,7 +18,7 @@ Install [Terraform](https://www.terraform.io/downloads.html) v0.12.x on your sys
 
 ```sh
 $ terraform version
-Terraform v0.12.9
+Terraform v0.12.12
 ```
 
 Add the [terraform-provider-ct](https://github.com/poseidon/terraform-provider-ct) plugin binary for your system to `~/.terraform.d/plugins/`, noting the final name.
@@ -50,7 +50,7 @@ Configure the DigitalOcean provider to use your token in a `providers.tf` file.
 
 ```tf
 provider "digitalocean" {
-  version = "1.8.0"
+  version = "1.11.0"
   token = "${chomp(file("~/.config/digital-ocean/token"))}"
 }
 
@@ -65,7 +65,7 @@ Define a Kubernetes cluster using the module `digital-ocean/container-linux/kube
 
 ```tf
 module "digital-ocean-nemo" {
-  source = "git::https://github.com/poseidon/typhoon//digital-ocean/container-linux/kubernetes?ref=v1.16.2"
+  source = "git::https://github.com/poseidon/typhoon//digital-ocean/container-linux/kubernetes?ref=v1.16.3"
 
   # Digital Ocean
   cluster_name = "nemo"
@@ -130,9 +130,9 @@ In 3-6 minutes, the Kubernetes cluster will be ready.
 $ export KUBECONFIG=/home/user/.secrets/clusters/nemo/auth/kubeconfig
 $ kubectl get nodes
 NAME               STATUS  ROLES   AGE  VERSION
-10.132.110.130     Ready   <none>  10m  v1.16.2
-10.132.115.81      Ready   <none>  10m  v1.16.2
-10.132.124.107     Ready   <none>  10m  v1.16.2
+10.132.110.130     Ready   <none>  10m  v1.16.3
+10.132.115.81      Ready   <none>  10m  v1.16.3
+10.132.124.107     Ready   <none>  10m  v1.16.3
 ```
 
 List the pods.

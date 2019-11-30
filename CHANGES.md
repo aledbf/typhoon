@@ -4,16 +4,38 @@ Notable changes between versions.
 
 ## Latest
 
-* Upgrade Calico from v3.9.2 to [v3.10.0](https://docs.projectcalico.org/v3.10/release-notes/)
+* Update CoreDNS from v1.6.2 to v1.6.5 ([#588](https://github.com/poseidon/typhoon/pull/588))
+  * Add health `lameduck` option to wait before shutdown
+* Add CPU requests to control plane static pods ([#589](https://github.com/poseidon/typhoon/pull/589))
+  * May provide slight edge case benefits and aligns with upstream
+* Replace usage of `template_dir` with `templatefile` function ([#587](https://github.com/poseidon/typhoon/pull/587))
+  * Require Terraform version v0.12.6+ (action required)
+
+#### Google
+
+* Use new `google_compute_region_instance_group_manager` version block format
+  * Fixes warning that `instance_template` is deprecated
+  * Require `terraform-provider-google` v2.19.0+ (action required)
+
+#### Addons
+
+* Add pod networking details in dashboards ([#593](https://github.com/poseidon/typhoon/pull/593))
+* Add node alerts and Grafana dashboard from node-exporter ([#591](https://github.com/poseidon/typhoon/pull/591))
+
+## v1.16.3
+
+* Kubernetes [v1.16.3](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.16.md#v1163)
+* Update etcd from v3.4.2 to v3.4.3 ([#582](https://github.com/poseidon/typhoon/pull/582))
+* Upgrade Calico from v3.9.2 to [v3.10.1](https://docs.projectcalico.org/v3.10/release-notes/)
   * Allow advertising service ClusterIPs to peer routers via a [BGPConfiguration](https://docs.projectcalico.org/v3.10/networking/advertise-service-ips)
 * Switch `kube-proxy` from iptables to ipvs mode ([#574](https://github.com/poseidon/typhoon/pull/574))
 
 #### Addons
 
-* Update Prometheus from v2.13.0 to v2.13.1
+* Update Prometheus from v2.13.0 to [v2.14.0](https://github.com/prometheus/prometheus/releases/tag/v2.14.0)
   * Refresh rules, alerts, and dashboards from upstreams
 * Remove addon-resizer from kube-state-metrics ([#575](https://github.com/poseidon/typhoon/pull/575))
-* Update Grafana from v6.4.2 to v6.4.3
+* Update Grafana from v6.4.2 to v6.4.4
 
 ## v1.16.2
 
